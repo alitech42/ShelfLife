@@ -2,10 +2,10 @@ import { Link } from "react-router";
 
 export function NavBar() {
     return (
-        <nav>
-            <Link to={'/home'}>Home</Link>
-            <Link to={'/list'}>List</Link>
-            <Link to={'/stats'}>Stats</Link>
+        <nav className=" text-[#FDFEFE] flex flex-row gap-9 text-3xl">
+            <Link to={'/home'} className=" transition-all hover:bg-[#C0392B] p-2 hover:scale-110">Home</Link>
+            <Link to={'/list'} className=" transition-all hover:bg-[#C0392B] p-2 hover:scale-110">List</Link>
+            <Link to={'/stats'} className=" transition-all hover:bg-[#C0392B] p-2 hover:scale-110">Stats</Link>
         </nav>
     )
 }
