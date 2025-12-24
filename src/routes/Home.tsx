@@ -30,7 +30,7 @@ export function Home() {
     useEffect(() => console.log(books), [books])
 
     return (
-        <main className="flex-6 flex flex-col items-center p-5">
+        <main className="flex-6 flex flex-col items-center p-5 bg-[#FDFEFE]">
             <h1 className=" flex justify-center items-center text-7xl w-full flex-1">
                 What have you read today?
             </h1>
