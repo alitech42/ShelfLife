@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import type { book } from "../types";
 
 export function Home() {
     const [query, setQuery] = useState("");
+    const [books, setBooks] = useState<book[]>([])
 
     function handleQuery(e: React.ChangeEvent<HTMLInputElement>) {
         setQuery(e.target.value);
@@ -16,7 +18,7 @@ export function Home() {
             );
             const data = await response.json();
 
-            console.log(data);
+            setBooks(data.docs)
         }
         const timeoutID = setTimeout(() => {
             getBooks(query);
@@ -24,6 +26,8 @@ export function Home() {
 
         return () => clearTimeout(timeoutID);
     }, [query]);
+
+    useEffect(() => console.log(books), [books])
 
     return (
         <main className="flex-6 flex flex-col items-center p-5">
