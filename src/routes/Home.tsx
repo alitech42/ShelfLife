@@ -6,7 +6,7 @@ export function Home() {
                 <input
                     type="text"
                     placeholder="Search books here"
-                    className="border border-solid rounded-2xl p-2"
+                    className="border border-solid rounded-2xl p-2 w-[60%]"
                 />
             </div>
         </main>
