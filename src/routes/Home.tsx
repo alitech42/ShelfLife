@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import type { book } from "../types";
+import { QueryResults } from "../components/QueryResults";
 
 export function Home() {
     const [query, setQuery] = useState("");
-    const [books, setBooks] = useState<book[]>([])
+    const [books, setBooks] = useState<book[]>([]);
 
     function handleQuery(e: React.ChangeEvent<HTMLInputElement>) {
         setQuery(e.target.value);
@@ -18,7 +19,7 @@ export function Home() {
             );
             const data = await response.json();
 
-            setBooks(data.docs)
+            setBooks(data.docs);
         }
         const timeoutID = setTimeout(() => {
             getBooks(query);
@@ -27,14 +28,14 @@ export function Home() {
         return () => clearTimeout(timeoutID);
     }, [query]);
 
-    useEffect(() => console.log(books), [books])
+    useEffect(() => console.log(books), [books]);
 
     return (
         <main className="flex-6 flex flex-col items-center p-5 bg-[#FDFEFE]">
             <h1 className=" flex justify-center items-center text-7xl w-full flex-1">
                 What have you read today?
             </h1>
-            <div className="flex flex-2 flex-col justify-center items-center w-full">
+            <div className="flex flex-2 flex-col justify-center items-center w-full gap-4">
                 <input
                     type="text"
                     placeholder="Search books here"
@@ -42,6 +43,7 @@ export function Home() {
                     value={query}
                     onChange={(e) => handleQuery(e)}
                 />
+                {books.length > 0 && <QueryResults data={books} />}
             </div>
         </main>
     );
