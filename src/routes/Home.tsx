@@ -5,24 +5,42 @@ import { QueryResults } from "../components/QueryResults";
 export function Home() {
     const [query, setQuery] = useState("");
     const [books, setBooks] = useState<book[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     function handleQuery(e: React.ChangeEvent<HTMLInputElement>) {
         setQuery(e.target.value);
     }
 
     useEffect(() => {
-        async function getBooks(query: string) {
-            const response = await fetch(
-                `https://openlibrary.org/search.json?q=${encodeURIComponent(
-                    query
-                )}`
-            );
-            const data = await response.json();
-
-            setBooks(data.docs);
+        if (!query) {
+            setBooks([]);
+            setError(null);
+            return;
         }
+
         const timeoutID = setTimeout(() => {
-            getBooks(query);
+            async function getBooks() {
+                setError(null);
+                setIsLoading(true);
+
+                try {
+                    const response = await fetch(
+                        `https://openlibrary.org/search.json?q=${encodeURIComponent(
+                            query
+                        )}`
+                    );
+                    if (!response.ok) throw new Error("Failed to search");
+                    const data = await response.json();
+                    setBooks(data.docs);
+                } catch (err: any) {
+                    setError(err.message);
+                } finally {
+                    setIsLoading(false);
+                }
+            }
+
+            getBooks();
         }, 1000);
 
         return () => clearTimeout(timeoutID);
@@ -43,7 +61,15 @@ export function Home() {
                     value={query}
                     onChange={(e) => handleQuery(e)}
                 />
-                {books.length > 0 && <QueryResults data={books} />}
+                {isLoading && <p>Searching...</p>}
+                {!isLoading && error && <p>An error happened during search</p>}
+                {!isLoading && !error && books.length === 0 && query && (
+                    <p>No results found</p>
+                )}
+                {!isLoading && !error && books.length > 0 && query && (
+                    <QueryResults data={books} />
+                )}
+                
             </div>
         </main>
     );
