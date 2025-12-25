@@ -19,6 +19,8 @@ export function Home() {
             return;
         }
 
+        const controller = new AbortController();
+
         const timeoutID = setTimeout(() => {
             async function getBooks() {
                 setError(null);
@@ -28,13 +30,14 @@ export function Home() {
                     const response = await fetch(
                         `https://openlibrary.org/search.json?q=${encodeURIComponent(
                             query
-                        )}`
+                        )}`,
+                        { signal: controller.signal }
                     );
                     if (!response.ok) throw new Error("Failed to search");
                     const data = await response.json();
                     setBooks(data.docs);
                 } catch (err: any) {
-                    setError(err.message);
+                    if (err.name !== "AbortError") setError(err.message);
                 } finally {
                     setIsLoading(false);
                 }
@@ -43,7 +46,10 @@ export function Home() {
             getBooks();
         }, 1000);
 
-        return () => clearTimeout(timeoutID);
+        return () => {
+            clearTimeout(timeoutID);
+            controller.abort();
+        };
     }, [query]);
 
     useEffect(() => console.log(books), [books]);
@@ -69,7 +75,6 @@ export function Home() {
                 {!isLoading && !error && books.length > 0 && query && (
                     <QueryResults data={books} />
                 )}
-                
             </div>
         </main>
     );
