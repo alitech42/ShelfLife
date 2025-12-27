@@ -1,6 +1,6 @@
 export function BookInfo() {
     return (
-        <main className="flex flex-col h-full justify-between items-center p-4 gap-5">
+        <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto">
             <div className="flex flex-col border rounded-2xl gap-6 p-4">
                 <img
                     src="https://ia800505.us.archive.org/view_archive.php?archive=/35/items/l_covers_0014/l_covers_0014_65.zip&file=0014658378-L.jpg"
@@ -35,6 +35,20 @@ export function BookInfo() {
                     powers and his immortality, aided by "benders" and
                     "inquisitors", along with the powerful magic of Allomancy.
                 </p>
+            </div>
+            <div className=" flex flex-row gap-3">
+                <div className="border rounded-2xl p-3">
+                    <p>Publish Date</p>
+                    <p>2019</p>
+                </div>
+                <div className="border rounded-2xl p-3">
+                    <p>Publisher</p>
+                    <p>Tor Fantasy</p>
+                </div>
+                <div className="border rounded-2xl p-3">
+                    <p>Pages</p>
+                    <p>672</p>
+                </div>
             </div>
         </main>
     );
