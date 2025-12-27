@@ -7,7 +7,7 @@ type QueryResultsProps = {
 
 export function QueryResults({ data }: QueryResultsProps) {
     return (
-        <div className=" shadow-xl rounded-2xl w-[50%] border border-solid p-4 flex flex-col gap-5 overflow-hidden h-96">
+        <div className=" shadow-xl rounded-2xl w-[50%] border border-solid p-4 flex flex-col gap-5 overflow-scroll h-96">
             {data.map(({ title, author_name }) => (
                 <BookCard
                     title={title}
