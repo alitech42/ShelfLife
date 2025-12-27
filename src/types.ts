@@ -6,4 +6,5 @@ export type book = {
     first_publish_year: number;
     language?: string[];
     title: string;
+    key: string
 };
