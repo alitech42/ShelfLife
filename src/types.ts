@@ -6,5 +6,11 @@ export type book = {
     first_publish_year: number;
     language?: string[];
     title: string;
-    key: string
+    key: string;
+};
+
+export type ReadingStatsCounts  = {
+    want_to_read: number;
+    currently_reading: number;
+    already_read: number;
 };
