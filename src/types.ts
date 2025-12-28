@@ -9,7 +9,7 @@ export type book = {
     key: string;
 };
 
-export type ReadingStatsCounts  = {
+export type ReadingStatsCounts = {
     want_to_read: number;
     currently_reading: number;
     already_read: number;

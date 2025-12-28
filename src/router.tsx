@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/works/:olid",
-                element: <BookInfo />
-            }
+                element: <BookInfo />,
+            },
         ],
     },
 ]);
