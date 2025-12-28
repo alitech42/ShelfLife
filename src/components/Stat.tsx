@@ -1,6 +1,6 @@
 type props = {
     label: string;
-    data: string;
+    data: string | number;
 }
 
 export function Stat({label, data}: props) {
