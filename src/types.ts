@@ -16,7 +16,7 @@ export type ReadingStatsCounts = {
 };
 
 export type BookDetails = {
-    description: string;
+    description: string | {value:string};
     title: string;
     covers?: number[];
 };

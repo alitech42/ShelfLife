@@ -10,7 +10,10 @@ export function BookInfo() {
     const [bookDetails, setBookDetails] = useState<BookDetails>();
     const [error, setError] = useState<Error | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const description = bookDetails ? bookDetails.description : "";
+    const description =
+        typeof bookDetails?.description === "string"
+            ? bookDetails.description
+            : bookDetails?.description?.value ?? "";
     const cover = bookDetails?.covers?.[0]
         ? `https://covers.openlibrary.org/b/id/${bookDetails.covers[0]}-M.jpg`
         : "";
@@ -46,7 +49,7 @@ export function BookInfo() {
         <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto">
             <BookActions
                 title={
-                    title !== "" && !isLoading && error
+                    title !== "" && !isLoading && !error
                         ? title
                         : isLoading
                         ? "Loading"
