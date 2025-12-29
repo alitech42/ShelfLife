@@ -20,3 +20,12 @@ export type BookDetails = {
     title: string;
     covers?: number[];
 };
+
+export type MetaData = {
+    publishers: string[];
+    publish_date: string;
+    isbn_13: string[];
+    isbn_10: string[];
+    number_of_pages: number;
+    languages: {key:string}[]
+}
