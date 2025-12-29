@@ -8,31 +8,68 @@ import type { BookDetails } from "../types";
 
 export function BookInfo() {
     const [bookDetails, setBookDetails] = useState<BookDetails>();
+    const [error, setError] = useState<Error | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
     const description = bookDetails ? bookDetails.description : "";
     const cover = bookDetails?.covers?.[0]
         ? `https://covers.openlibrary.org/b/id/${bookDetails.covers[0]}-M.jpg`
         : "";
-    const title = bookDetails ? bookDetails.title : ''
+    const title = bookDetails ? bookDetails.title : "";
 
     const { olid } = useParams();
 
     useEffect(() => {
+        setError(null);
+        setIsLoading(true);
         async function getData() {
-            const response = await fetch(
-                `https://openlibrary.org/works/${olid}.json`
-            );
-            const data = await response.json();
+            try {
+                const response = await fetch(
+                    `https://openlibrary.org/works/${olid}.json`
+                );
+                const data = await response.json();
 
-            setBookDetails(data);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch book data");
+                }
+
+                setBookDetails(data);
+            } catch (err) {
+                setError(err as Error);
+            } finally {
+                setIsLoading(false);
+            }
         }
         getData();
     }, [olid]);
 
     return (
         <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto">
-            <BookActions title={title} cover={cover}/>
+            <BookActions
+                title={
+                    title !== "" && !isLoading && error
+                        ? title
+                        : isLoading
+                        ? "Loading"
+                        : "An error happened"
+                }
+                cover={
+                    cover !== "" && !isLoading && !error
+                        ? cover
+                        : isLoading
+                        ? "Loading"
+                        : "An error happened"
+                }
+            />
             <ReadingStats />
-            <BookDescription description={description}/>
+            <BookDescription
+                description={
+                    !isLoading && !error
+                        ? description
+                        : isLoading
+                        ? "Loading"
+                        : "An error happened"
+                }
+            />
             <BookMeta />
         </main>
     );
