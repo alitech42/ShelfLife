@@ -14,3 +14,9 @@ export type ReadingStatsCounts = {
     currently_reading: number;
     already_read: number;
 };
+
+export type BookDetails = {
+    description: string;
+    title: string;
+    covers?: number[];
+};
