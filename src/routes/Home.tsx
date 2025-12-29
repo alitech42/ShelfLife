@@ -30,7 +30,7 @@ export function Home() {
                     const response = await fetch(
                         `https://openlibrary.org/search.json?q=${encodeURIComponent(
                             query
-                        )}`,
+                        )}&sort=rating`,
                         { signal: controller.signal }
                     );
                     if (!response.ok) throw new Error("Failed to search");

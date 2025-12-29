@@ -6,5 +6,5 @@ export function Header() {
             <h1 className=" text-[#FDFEFE] text-5xl">ShelfLife</h1>
             <NavBar />
         </header>
-    )
+    );
 }

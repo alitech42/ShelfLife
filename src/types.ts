@@ -6,4 +6,26 @@ export type book = {
     first_publish_year: number;
     language?: string[];
     title: string;
+    key: string;
 };
+
+export type ReadingStatsCounts = {
+    want_to_read: number;
+    currently_reading: number;
+    already_read: number;
+};
+
+export type BookDetails = {
+    description: string | {value:string};
+    title: string;
+    covers?: number[];
+};
+
+export type MetaData = {
+    publishers: string[];
+    publish_date: string;
+    isbn_13: string[];
+    isbn_10: string[];
+    number_of_pages: number;
+    languages: {key:string}[]
+}

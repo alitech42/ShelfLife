@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { App } from "./App";
 import { Home } from "./routes/Home";
+import { BookInfo } from "./routes/BookInfo";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
             {
                 path: "/home",
                 element: <Navigate to={"/"} replace />,
+            },
+            {
+                path: "/works/:olid",
+                element: <BookInfo />,
             },
         ],
     },
