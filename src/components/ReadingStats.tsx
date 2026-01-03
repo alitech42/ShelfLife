@@ -21,7 +21,7 @@ export function ReadingStats() {
     }, [olid]);
 
     return (
-        <div className="flex flex-row gap-2 border rounded-2xl p-4">
+        <div className="flex flex-row gap-2 border rounded-2xl p-4 sm:col-end-2 sm:row-end-1">
             <Stat
                 label="Want to read"
                 data={stats ? stats.want_to_read : "Loading..."}

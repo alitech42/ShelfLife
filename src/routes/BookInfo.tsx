@@ -46,7 +46,7 @@ export function BookInfo() {
     }, [olid]);
 
     return (
-        <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto">
+        <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto sm:grid sm:grid-cols-2 sm:grid-rows-3">
             <BookActions
                 title={
                     title !== "" && !isLoading && !error
