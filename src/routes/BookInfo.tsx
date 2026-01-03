@@ -46,7 +46,7 @@ export function BookInfo() {
     }, [olid]);
 
     return (
-        <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto sm:grid sm:grid-cols-[auto_1fr]">
+        <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto sm:flex-row">
             <BookActions
                 title={
                     title !== "" && !isLoading && !error
@@ -63,17 +63,19 @@ export function BookInfo() {
                         : "An error happened"
                 }
             />
-            <ReadingStats />
-            <BookDescription
-                description={
-                    !isLoading && !error
-                        ? description
-                        : isLoading
-                        ? "Loading"
-                        : "An error happened"
-                }
-            />
-            <BookMeta />
+            <div className="flex flex-col gap-5">
+                <ReadingStats />
+                <BookDescription
+                    description={
+                        !isLoading && !error
+                            ? description
+                            : isLoading
+                            ? "Loading"
+                            : "An error happened"
+                    }
+                />
+                <BookMeta />
+            </div>
         </main>
     );
 }
