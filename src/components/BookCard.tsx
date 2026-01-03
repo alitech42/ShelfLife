@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 type BookCardProps = {
     title: string;
-    bookRoute: string
+    bookRoute: string;
     author?: string;
 };
 

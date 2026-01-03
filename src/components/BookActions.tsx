@@ -5,7 +5,7 @@ type BookActionsProps = {
 
 export function BookActions({ title, cover }: BookActionsProps) {
     return (
-        <div className="flex flex-col border rounded-2xl gap-6 p-4 sm:col-start-1 sm:row-start-2 sm:shrink-0">
+        <div className="flex flex-col border rounded-2xl gap-6 p-4 sm:shrink-0">
             {cover !== "" ? <img src={cover} alt={title} /> : <h1>{title}</h1>}
             <button className=" border rounded-2xl">Add to List</button>
             <label>
