@@ -28,7 +28,7 @@ export function BookMeta() {
     }, [olid]);
 
     return (
-        <div className=" flex flex-row gap-3 sm:col-end-2 sm:row-end-3">
+        <div className=" flex flex-row gap-3 sm:col-start-1 sm:row-start-3">
             <div className="border rounded-2xl p-3">
                 <p>Publish Date</p>
                 <p>{relevantEdition?.publish_date ?? "No Data"}</p>

@@ -4,7 +4,7 @@ type BookDescriptionProps = {
 
 export function BookDescription({ description }: BookDescriptionProps) {
     return (
-        <div className=" sm:col-end-2 sm:row-end-2">
+        <div className=" sm:col-start-2 sm:row-start-2 sm:overflow-y-auto sm:justify-self-center self-center">
             <p>{description}</p>
         </div>
     );
