@@ -1,26 +1,32 @@
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { NavLinks } from "./NavLinks";
 
 export function NavBar() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClick() {
+        setIsOpen((prev) => !prev);
+    }
+
+    useEffect(() => console.log(isOpen), [isOpen]);
+
     return (
-        <nav className=" text-[#FDFEFE] sm:flex flex-row gap-9 text-3xl hidden">
-            <Link
-                to={"/home"}
-                className=" transition-all hover:bg-[#C0392B] p-2 hover:scale-110"
-            >
-                Home
-            </Link>
-            <Link
-                to={"/list"}
-                className=" transition-all hover:bg-[#C0392B] p-2 hover:scale-110"
-            >
-                List
-            </Link>
-            <Link
-                to={"/stats"}
-                className=" transition-all hover:bg-[#C0392B] p-2 hover:scale-110"
-            >
-                Stats
-            </Link>
+        <nav>
+            <div>
+                <button
+                    className=" text-[#FDFEFE] text-4xl sm:hidden mb-3"
+                    onClick={handleClick}
+                >
+                    ☰
+                </button>
+                <div className={`${isOpen ? "flex" : "hidden"} flex-col text-[#FDFEFE] gap-9 text-3xl sm:hidden p-3`}>
+                    <NavLinks />
+                </div>
+            </div>
+
+            <div className=" text-[#FDFEFE] sm:flex flex-row gap-9 text-3xl hidden">
+                <NavLinks />
+            </div>
         </nav>
     );
 }
