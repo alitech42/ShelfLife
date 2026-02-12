@@ -12,9 +12,9 @@ export function NavBar() {
 
     return (
         <nav>
-            <div>
+            <div className="flex flex-col sm:hidden">
                 <button
-                    className=" text-[#FDFEFE] text-4xl sm:hidden mb-3"
+                    className=" text-[#FDFEFE] text-4xl mb-3"
                     onClick={handleClick}
                 >
                     ☰
