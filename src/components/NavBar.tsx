@@ -20,7 +20,7 @@ export function NavBar() {
                     ☰
                 </button>
                 <div
-                    className={`${isOpen ? "max-h-96" : "max-h-0"} overflow-hidden transition-[max-height] flex flex-col text-[#FDFEFE] gap-9 text-3xl sm:hidden p-3`}
+                    className={`${isOpen ? "max-h-96" : "max-h-0"} overflow-hidden transition-[max-height] duration-400 flex flex-col text-[#FDFEFE] gap-9 text-3xl sm:hidden p-3`}
                 >
                     <NavLinks />
                 </div>
