@@ -8,7 +8,7 @@ type BookActionsProps = {
 
 export function BookActions({ title, cover, olid }: BookActionsProps) {
     function handleClick() {
-        saveToLocalStorage(title, olid);
+        saveToLocalStorage(title, cover, olid);
     }
 
     return (

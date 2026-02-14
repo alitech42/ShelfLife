@@ -32,5 +32,6 @@ export type MetaData = {
 
 export type listData = {
     title: string,
+    cover?: string,
     olid: string
 }
