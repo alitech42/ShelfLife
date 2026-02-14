@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
 import { saveToLocalStorage } from "../utilities";
 
 type BookActionsProps = {
     title: string;
     cover: string;
+    olid: string
 };
 
-export function BookActions({ title, cover }: BookActionsProps) {
+export function BookActions({ title, cover, olid }: BookActionsProps) {
     function handleClick() {
-        saveToLocalStorage(title);
+        saveToLocalStorage(title, olid);
     }
 
     return (

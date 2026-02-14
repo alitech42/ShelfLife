@@ -45,6 +45,8 @@ export function BookInfo() {
         getData();
     }, [olid]);
 
+    if (!olid) throw new Error("olid missing")
+
     return (
         <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto sm:flex-row">
             <BookActions
@@ -62,6 +64,7 @@ export function BookInfo() {
                         ? "Loading"
                         : "An error happened"
                 }
+                olid={olid}
             />
             <div className="flex flex-col gap-5">
                 <ReadingStats />
