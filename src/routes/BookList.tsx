@@ -6,7 +6,7 @@ export function BookList() {
 
     return (
         <main className="flex-6 flex flex-col gap-3  p-5 bg-[#FDFEFE]">
-            {listBooks.map(listBook => <BookListItem title={listBook.title} olid={listBook.olid} key={crypto.randomUUID()}/>)}
+            {listBooks.map(listBook => <BookListItem title={listBook.title} cover={listBook.cover } olid={listBook.olid} key={crypto.randomUUID()}/>)}
         </main>
     )
 }
