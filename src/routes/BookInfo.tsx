@@ -13,7 +13,7 @@ export function BookInfo() {
     const description =
         typeof bookDetails?.description === "string"
             ? bookDetails.description
-            : bookDetails?.description?.value ?? "";
+            : (bookDetails?.description?.value ?? "");
     const cover = bookDetails?.covers?.[0]
         ? `https://covers.openlibrary.org/b/id/${bookDetails.covers[0]}-M.jpg`
         : "";
@@ -27,7 +27,7 @@ export function BookInfo() {
         async function getData() {
             try {
                 const response = await fetch(
-                    `https://openlibrary.org/works/${olid}.json`
+                    `https://openlibrary.org/works/${olid}.json`,
                 );
                 const data = await response.json();
 
@@ -45,7 +45,7 @@ export function BookInfo() {
         getData();
     }, [olid]);
 
-    if (!olid) throw new Error("olid missing")
+    if (!olid) throw new Error("olid missing");
 
     return (
         <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto sm:flex-row">
@@ -54,15 +54,15 @@ export function BookInfo() {
                     title !== "" && !isLoading && !error
                         ? title
                         : isLoading
-                        ? "Loading"
-                        : "An error happened"
+                          ? "Loading"
+                          : "An error happened"
                 }
                 cover={
                     cover !== "" && !isLoading && !error
                         ? cover
                         : isLoading
-                        ? "Loading"
-                        : "An error happened"
+                          ? "Loading"
+                          : "An error happened"
                 }
                 olid={olid}
             />
@@ -73,8 +73,8 @@ export function BookInfo() {
                         !isLoading && !error
                             ? description
                             : isLoading
-                            ? "Loading"
-                            : "An error happened"
+                              ? "Loading"
+                              : "An error happened"
                     }
                 />
                 <BookMeta />

@@ -11,13 +11,13 @@ export function BookMeta() {
         ({ languages, number_of_pages, publishers }) =>
             languages?.[0]?.key === "/languages/eng" &&
             number_of_pages &&
-            publishers?.length
+            publishers?.length,
     );
 
     useEffect(() => {
         async function getData() {
             const response = await fetch(
-                `https://openlibrary.org/works/${olid}/editions.json`
+                `https://openlibrary.org/works/${olid}/editions.json`,
             );
             const data = await response.json();
 

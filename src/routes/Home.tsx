@@ -29,9 +29,9 @@ export function Home() {
                 try {
                     const response = await fetch(
                         `https://openlibrary.org/search.json?q=${encodeURIComponent(
-                            query
+                            query,
                         )}&sort=rating`,
-                        { signal: controller.signal }
+                        { signal: controller.signal },
                     );
                     if (!response.ok) throw new Error("Failed to search");
                     const data = await response.json();

@@ -23,8 +23,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/list",
-                element: <BookList />
-            }
+                element: <BookList />,
+            },
         ],
     },
 ]);

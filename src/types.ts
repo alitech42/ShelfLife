@@ -16,7 +16,7 @@ export type ReadingStatsCounts = {
 };
 
 export type BookDetails = {
-    description: string | {value:string};
+    description: string | { value: string };
     title: string;
     covers?: number[];
 };
@@ -27,11 +27,11 @@ export type MetaData = {
     isbn_13: string[];
     isbn_10: string[];
     number_of_pages: number;
-    languages: {key:string}[]
-}
+    languages: { key: string }[];
+};
 
 export type listData = {
-    title: string,
-    cover?: string,
-    olid: string
-}
+    title: string;
+    cover?: string;
+    olid: string;
+};

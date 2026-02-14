@@ -11,7 +11,7 @@ export function ReadingStats() {
     useEffect(() => {
         async function getStats() {
             const response = await fetch(
-                `https://openlibrary.org/works/${olid}/bookshelves.json`
+                `https://openlibrary.org/works/${olid}/bookshelves.json`,
             );
             const data = await response.json();
 
