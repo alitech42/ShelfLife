@@ -29,3 +29,8 @@ export type MetaData = {
     number_of_pages: number;
     languages: {key:string}[]
 }
+
+export type listData = {
+    title: string,
+    olid: string
+}
