@@ -34,4 +34,5 @@ export type listData = {
     title: string;
     cover?: string;
     olid: string;
+    rating: string
 };
