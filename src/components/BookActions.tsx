@@ -1,4 +1,4 @@
-import { saveToLocalStorage } from "../utilities";
+import { saveToLocalStorage, updateLocalStorage } from "../utilities";
 import type { listData } from "../types";
 import { useState, useEffect } from "react";
 
@@ -14,11 +14,22 @@ export function BookActions({ title, cover, olid }: BookActionsProps) {
         return stored ? JSON.parse(stored) : [];
     });
 
+    const [rating, setRating] = useState('undefined')
+    useEffect(() => {
+        console.log(rating)
+        updateLocalStorage(olid, rating);
+    
+    }, [rating])
+
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        setRating(e.target.value)
+    }
+
     const isAdded = list.some((book: listData) => book.olid === olid);
     useEffect(() => console.log(list), []);
 
     function handleClick() {
-        saveToLocalStorage(title, cover, olid);
+        saveToLocalStorage(title, cover, olid, rating);
         setList(JSON.parse(localStorage.getItem("data") ?? "[]"));
     }
 
@@ -39,7 +50,7 @@ export function BookActions({ title, cover, olid }: BookActionsProps) {
             )}
 
             <label>
-                Your rating: <input type="number" min={0} max={10} />
+                Your rating: <input type="number" min={0} max={10} onChange={(e) => {handleChange(e)}}/>
             </label>
         </div>
     );
