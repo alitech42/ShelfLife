@@ -13,6 +13,7 @@ export function BookList() {
                     title={listBook.title}
                     cover={listBook.cover}
                     olid={listBook.olid}
+                    rating={listBook.rating}
                     key={crypto.randomUUID()}
                 />
             ))}
