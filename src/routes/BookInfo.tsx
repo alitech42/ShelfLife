@@ -13,7 +13,7 @@ export function BookInfo() {
     const description =
         typeof bookDetails?.description === "string"
             ? bookDetails.description
-            : (bookDetails?.description?.value ?? "");
+            : (bookDetails?.description?.value ?? "No description found");
     const cover = bookDetails?.covers?.[0]
         ? `https://covers.openlibrary.org/b/id/${bookDetails.covers[0]}-M.jpg`
         : "";
@@ -48,7 +48,7 @@ export function BookInfo() {
     if (!olid) throw new Error("olid missing");
 
     return (
-        <main className="flex flex-col h-full justify-between items-center p-4 gap-5 overflow-auto sm:flex-row">
+        <main className="flex flex-col h-full justify-around items-center p-4 gap-5 overflow-auto sm:flex-row">
             <BookActions
                 title={
                     title !== "" && !isLoading && !error
