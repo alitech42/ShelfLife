@@ -14,18 +14,23 @@ export function BookActions({ title, cover, olid }: BookActionsProps) {
         return stored ? JSON.parse(stored) : [];
     });
 
-    const [rating, setRating] = useState('undefined')
+    const isAdded = list.some((book: listData) => book.olid === olid);
+
+    const [rating, setRating] = useState(() => {
+        return isAdded
+            ? list.filter((book) => book.olid === olid)[0].rating
+            : "undefined";
+    });
+
     useEffect(() => {
-        console.log(rating)
+        console.log(rating);
         updateLocalStorage(olid, rating);
-    
-    }, [rating])
+    }, [rating]);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        setRating(e.target.value)
+        setRating(e.target.value);
     }
 
-    const isAdded = list.some((book: listData) => book.olid === olid);
     useEffect(() => console.log(list), []);
 
     function handleClick() {
@@ -50,7 +55,16 @@ export function BookActions({ title, cover, olid }: BookActionsProps) {
             )}
 
             <label>
-                Your rating: <input type="number" min={0} max={10} onChange={(e) => {handleChange(e)}}/>
+                Your rating:{" "}
+                <input
+                    type="number"
+                    min={0}
+                    max={10}
+                    onChange={(e) => {
+                        handleChange(e);
+                    }}
+                    value={rating}
+                />
             </label>
         </div>
     );
